@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { mockTransactions } from "@/data/mockData";
 import { TransactionType } from "@/types";
@@ -19,10 +18,19 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { ArrowDown, ArrowUp, Plus } from "lucide-react";
+import { 
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { TransactionForm } from "@/components/financial/TransactionForm";
 import { useToast } from "@/hooks/use-toast";
 
 const Financial = () => {
   const { toast } = useToast();
+  
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   
   const handleAddTransaction = () => {
     toast({
@@ -31,7 +39,6 @@ const Financial = () => {
     });
   };
   
-  // Calculate financial metrics
   const totalIncome = mockTransactions
     .filter(t => t.type === TransactionType.INCOME)
     .reduce((acc, curr) => acc + curr.amount, 0);
@@ -51,6 +58,15 @@ const Financial = () => {
           Nova Transação
         </Button>
       </div>
+      
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+        <DialogContent className="max-w-2xl">
+          <DialogHeader>
+            <DialogTitle>Nova Transação</DialogTitle>
+          </DialogHeader>
+          <TransactionForm onSuccess={() => setIsDialogOpen(false)} />
+        </DialogContent>
+      </Dialog>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <Card>

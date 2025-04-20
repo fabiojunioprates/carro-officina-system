@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { mockInventoryItems } from "@/data/mockData";
 import { 
@@ -18,11 +17,18 @@ import {
 import { Button } from "@/components/ui/button";
 import { Search, Plus } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { useToast } from "@/hooks/use-toast";
+import { 
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { InventoryItemForm } from "@/components/inventory/InventoryItemForm";
 
 const Inventory = () => {
   const { toast } = useToast();
   const [searchTerm, setSearchTerm] = useState("");
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   
   const filteredItems = mockInventoryItems.filter((item) => 
     item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -46,6 +52,15 @@ const Inventory = () => {
           Novo Item
         </Button>
       </div>
+      
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+        <DialogContent className="max-w-2xl">
+          <DialogHeader>
+            <DialogTitle>Novo Item</DialogTitle>
+          </DialogHeader>
+          <InventoryItemForm onSuccess={() => setIsDialogOpen(false)} />
+        </DialogContent>
+      </Dialog>
       
       <Card>
         <CardHeader>
