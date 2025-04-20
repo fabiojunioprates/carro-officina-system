@@ -72,6 +72,7 @@ export function TransactionForm({ onSuccess }: TransactionFormProps) {
       description: `${data.type === TransactionType.INCOME ? "Receita" : "Despesa"} de R$ ${data.amount.toFixed(2)} registrada.`,
     });
     
+    form.reset();
     onSuccess();
   };
 

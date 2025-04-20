@@ -29,14 +29,10 @@ import { useToast } from "@/hooks/use-toast";
 
 const Financial = () => {
   const { toast } = useToast();
-  
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   
   const handleAddTransaction = () => {
-    toast({
-      title: "Funcionalidade em desenvolvimento",
-      description: "O registro de transações financeiras será implementado em breve.",
-    });
+    setIsDialogOpen(true);
   };
   
   const totalIncome = mockTransactions
