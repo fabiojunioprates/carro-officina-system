@@ -1,3 +1,4 @@
+
 import { 
   Sidebar as ShadcnSidebar, 
   SidebarContent, 
@@ -18,7 +19,8 @@ import {
   Wallet,
   Settings,
   LogOut,
-  BookText
+  BookText,
+  Cog
 } from "lucide-react";
 
 const Sidebar = () => {
@@ -40,9 +42,20 @@ const Sidebar = () => {
 
   return (
     <ShadcnSidebar>
-      <SidebarHeader className="p-4 flex items-center">
+      <SidebarHeader className="p-4">
         <div className="flex items-center gap-2">
-          <span className="font-bold text-xl">CarroTech</span>
+          <div className="flex items-center gap-2">
+            <div className="relative w-8 h-8">
+              <Car className="w-6 h-6 text-primary absolute" />
+              <Cog className="w-4 h-4 text-primary absolute bottom-0 right-0 animate-spin-slow" />
+            </div>
+            <div className="flex flex-col items-start">
+              <span className="font-bold text-xl bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+                CarroTech
+              </span>
+              <span className="text-xs text-muted-foreground">Auto Management</span>
+            </div>
+          </div>
         </div>
         <SidebarTrigger className="ml-auto md:hidden" />
       </SidebarHeader>
