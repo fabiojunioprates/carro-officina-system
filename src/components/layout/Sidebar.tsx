@@ -1,4 +1,3 @@
-
 import { 
   Sidebar as ShadcnSidebar, 
   SidebarContent, 
@@ -18,7 +17,8 @@ import {
   Package, 
   Wallet,
   Settings,
-  LogOut 
+  LogOut,
+  BookText
 } from "lucide-react";
 
 const Sidebar = () => {
@@ -34,7 +34,8 @@ const Sidebar = () => {
     { title: "Veículos", path: "/vehicles", icon: Car },
     { title: "Ordens de Serviço", path: "/service-orders", icon: FileText },
     { title: "Estoque", path: "/inventory", icon: Package },
-    { title: "Financeiro", path: "/financial", icon: Wallet }
+    { title: "Financeiro", path: "/financial", icon: Wallet },
+    { title: "Manual e Instruções", path: "/help", icon: BookText }
   ];
 
   return (
