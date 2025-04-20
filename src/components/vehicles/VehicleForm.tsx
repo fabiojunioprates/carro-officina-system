@@ -65,7 +65,19 @@ const VehicleForm = ({ vehicle, clients, onSave, onCancel }: VehicleFormProps) =
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setIsLoading(true);
     try {
-      onSave(values);
+      const vehicleData: Omit<Vehicle, "id" | "createdAt"> = {
+        plate: values.plate,
+        model: values.model,
+        brand: values.brand,
+        year: values.year,
+        color: values.color,
+        chassis: values.chassis || "",
+        mileage: values.mileage,
+        clientId: values.clientId
+      };
+      
+      onSave(vehicleData);
+      
       toast({
         title: "Veículo salvo",
         description: "As informações do veículo foram salvas com sucesso.",

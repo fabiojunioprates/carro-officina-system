@@ -48,7 +48,17 @@ const ClientForm = ({ client, onSave, onCancel }: ClientFormProps) => {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setIsLoading(true);
     try {
-      onSave(values);
+      // Ensure all required properties are present (not undefined)
+      const clientData: Omit<Client, "id" | "createdAt"> = {
+        name: values.name,
+        email: values.email,
+        phone: values.phone,
+        document: values.document,
+        address: values.address || ""
+      };
+      
+      onSave(clientData);
+      
       toast({
         title: "Cliente salvo",
         description: "As informações do cliente foram salvas com sucesso.",

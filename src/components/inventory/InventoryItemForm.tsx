@@ -51,8 +51,15 @@ export function InventoryItemForm({ onSuccess }: InventoryItemFormProps) {
 
   const onSubmit = (data: FormData) => {
     const newItem = {
-      ...data,
       id: `ITEM-${mockInventoryItems.length + 1}`,
+      code: data.code,
+      name: data.name,
+      description: data.description || "",
+      category: data.category,
+      costPrice: data.costPrice,
+      salePrice: data.salePrice,
+      stock: data.stock,
+      minStock: data.minStock,
       supplierId: undefined,
       lastPurchase: undefined,
       createdAt: new Date(),

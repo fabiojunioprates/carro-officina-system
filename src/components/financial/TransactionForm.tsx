@@ -54,10 +54,14 @@ export function TransactionForm({ onSuccess }: TransactionFormProps) {
 
   const onSubmit = (data: FormData) => {
     const newTransaction = {
-      ...data,
       id: `TRANS-${mockTransactions.length + 1}`,
+      description: data.description,
+      type: data.type,
+      amount: data.amount,
+      category: data.category,
+      paymentMethod: data.paymentMethod,
       date: new Date(data.date),
-      status: "COMPLETED",
+      status: "COMPLETED" as const,
       createdAt: new Date(),
     };
     

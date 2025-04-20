@@ -1,5 +1,7 @@
+
 import { useState } from "react";
 import { mockInventoryItems } from "@/data/mockData";
+import { useToast } from "@/hooks/use-toast";
 import { 
   Card, 
   CardContent, 
@@ -37,10 +39,7 @@ const Inventory = () => {
   );
   
   const handleAddItem = () => {
-    toast({
-      title: "Funcionalidade em desenvolvimento",
-      description: "O cadastro de itens de estoque será implementado em breve.",
-    });
+    setIsDialogOpen(true);
   };
   
   return (
