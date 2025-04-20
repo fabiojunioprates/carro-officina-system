@@ -12,6 +12,7 @@ import Vehicles from "./pages/Vehicles";
 import ServiceOrders from "./pages/ServiceOrders";
 import Inventory from "./pages/Inventory";
 import Financial from "./pages/Financial";
+import Help from "./pages/Help";  // Import the Help component
 import AppLayout from "./components/layout/AppLayout";
 
 const queryClient = new QueryClient();
@@ -41,3 +42,4 @@ const App = () => (
 );
 
 export default App;
+
